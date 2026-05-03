@@ -110,7 +110,7 @@
                 type="number"
                 name="phone_number"
                 id="phone_number"
-                placeholder="Phone Number"
+                placeholder="Phone Number (62...)"
                 autocomplete="off"
                 value="{{ old('phone_number') }}"
                 class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('phone_number') ring-2 ring-red-400 @enderror"

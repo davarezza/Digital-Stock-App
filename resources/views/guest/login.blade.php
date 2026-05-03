@@ -104,12 +104,12 @@
 
     <div class="bg-white rounded-2xl shadow-md px-4 py-3 w-full mb-6 flex items-center gap-3">
         <div class="flex-1">
-            <p class="text-sm font-bold text-gray-800">Canva Design</p>
-            <p class="text-xs text-gray-400">10 Task</p>
-            <span class="inline-block mt-1 text-xs border border-gray-300 rounded-full px-2 py-0.5 text-gray-500">Design</span>
+            <p class="text-sm font-bold text-gray-800">Digital Stock</p>
+            <p class="text-xs text-gray-400">50+ Barang</p>
+            <span class="inline-block mt-1 text-xs border border-gray-300 rounded-full px-2 py-0.5 text-gray-500">Baru</span>
         </div>
         <div class="w-10 h-10 rounded-full border-4 border-green-400 flex items-center justify-center">
-            <span class="text-xs font-bold text-green-600">84%</span>
+            <span class="text-xs font-bold text-green-600">100%</span>
         </div>
     </div>
 </div>
