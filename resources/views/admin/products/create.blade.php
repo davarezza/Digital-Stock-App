@@ -26,7 +26,7 @@
         </div>
         <div>
             <p class="text-sm font-bold text-gray-800 leading-none">Form Barang</p>
-            <p class="text-xs text-gray-400 mt-0.5">Isi semua field yang diperlukan</p>
+            <p class="text-xs text-gray-400 mt-0.5">Field yang bertanda * wajib diisi</p>
         </div>
     </div>
 

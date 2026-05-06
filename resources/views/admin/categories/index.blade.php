@@ -41,7 +41,7 @@
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl overflow-hidden bg-gray-100 shrink-0 border border-gray-200">
                                 @if ($category->image)
-                                    <img src="{{ asset('storage/' . $category->image) }}"
+                                    <img src="{{ asset('img/categories/' . $category->image) }}"
                                          alt="{{ $category->name }}"
                                          class="w-full h-full object-cover">
                                 @else
