@@ -42,7 +42,7 @@
         @auth
             @if (auth()->user()->role === 'admin')
             <div class="flex items-center gap-2 shrink-0">
-                <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 border border-gray-300 hover:border-green-500 hover:text-green-600 px-4 py-2 rounded-full transition shrink-0">
+                <a href="{{ route('dashboard.index') }}" class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 border border-gray-300 hover:border-green-500 hover:text-green-600 px-4 py-2 rounded-full transition shrink-0">
                     <i class='bx bx-cog text-base'></i> Dashboard
                 </a>
                 <form action="{{ route('logout') }}" method="POST">

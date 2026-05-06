@@ -15,18 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
             $table->string('image')->nullable();
-
-            $table->decimal('price_pack', 12, 2);
-            $table->decimal('price_box', 12, 2);
-            $table->integer('stock_pack')->default(0);
-            $table->integer('stock_box')->default(0);
-
+            $table->decimal('price', 12, 2);
+            $table->integer('stock')->default(0)->nullable();
+            // Keterangan Satuan (Misal: "Per Box isi 24" atau "Per Dus")
+            $table->string('unit_description')->default('Per Box')->nullable();
             $table->boolean('is_best_seller')->default(false);
             $table->boolean('is_visible')->default(true);
-
             $table->timestamps();
         });
     }
