@@ -1,14 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>{{ config('app.name') }} | Tambah Barang</title>
+    <title>{{ config('app.name') }} | Edit Barang</title>
 @endsection
 
 @section('container')
+
+{{-- Header --}}
 <div class="flex items-center justify-between mb-6">
     <div>
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Master Data</p>
-        <h1 class="text-xl font-extrabold text-gray-900">Tambah Barang</h1>
+        <h1 class="text-xl font-extrabold text-gray-900">Edit Barang</h1>
     </div>
 </div>
 
@@ -23,15 +25,22 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="px-6 py-6 space-y-5">
         @csrf
+        @method('PUT')
         <div>
             <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">
                 Nama Barang <span class="text-red-400">*</span>
             </label>
             <input
-                type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Contoh: Sembako, Minuman, Snack..."
-                class="w-full px-4 py-2.5 text-sm text-gray-800 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition placeholder-gray-300 @error('name') border-red-300 @else @enderror">
+                type="text"
+                name="name"
+                id="name"
+                value="{{ old('name', $product->name) }}"
+                placeholder="Contoh: Sembako, Minuman, Snack..."
+                class="w-full px-4 py-2.5 text-sm text-gray-800 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition placeholder-gray-300
+                       @error('name') border-red-300 @else @enderror"
+            >
             @error('name')
                 <p class="mt-1.5 text-xs text-red-500 flex items-center gap-1">
                     <i class="fa-solid fa-circle-exclamation text-[10px]"></i>
@@ -51,7 +60,8 @@
                     -- Pilih Kategori --
                 </option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}"
+                        {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
                 @endforeach
@@ -69,7 +79,7 @@
                 Deskripsi Satuan <span class="text-red-400">*</span>
             </label>
             <input
-                type="text" name="unit_description" id="unit_description" value="{{ old('unit_description') }}" placeholder="Contoh: 1 Dus = 12 Pcs..."
+                type="text" name="unit_description" id="unit_description" value="{{ old('unit_description', $product->unit_description) }}" placeholder="Contoh: 1 Dus = 12 Pcs..."
                 class="w-full px-4 py-2.5 text-sm text-gray-800 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition placeholder-gray-300 @error('unit_description') border-red-300 @else @enderror">
             @error('unit_description')
                  <p class="mt-1.5 text-xs text-red-500 flex items-center gap-1">
@@ -89,7 +99,7 @@
                         Rp
                     </span>
                     <input
-                        type="number" name="price" id="price" value="{{ old('price') }}" placeholder="15.000"
+                        type="number" name="price" id="price" value="{{ old('price', $product->price) }}" placeholder="15.000"
                         class="w-full pl-9 pr-4 py-2.5 text-sm text-gray-800 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition placeholder-gray-300 @error('price') border-red-300 @else @enderror">
                 </div>
                 @error('price')
@@ -105,7 +115,7 @@
                 </label>
                 <div class="relative">
                     <input
-                        type="number" name="stock" id="stock" value="{{ old('stock') }}" placeholder="0" min="0"
+                        type="number" name="stock" id="stock" value="{{ old('stock', $product->stock) }}" placeholder="0" min="0"
                         class="w-full pl-4 pr-12 py-2.5 text-sm text-gray-800 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition placeholder-gray-300 @error('stock') border-red-300 @else @enderror">
                 </div>
                 @error('stock')
@@ -120,14 +130,14 @@
         <div class="flex gap-6 mt-4">
             <div class="flex items-center">
                 <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" name="is_visible" value="1" class="sr-only peer" checked>
+                    <input type="checkbox" name="is_visible" value="1" class="sr-only peer" {{ old('is_visible', $product->is_visible) ? 'checked' : '' }}>
                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-green-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
                     <span class="ml-3 text-sm font-medium text-gray-700">Tampilkan di Katalog</span>
                 </label>
             </div>
             <div class="flex items-center">
                 <label class="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" name="is_best_seller" value="1" class="sr-only peer">
+                    <input type="checkbox" name="is_best_seller" value="1" class="sr-only peer" {{ old('is_best_seller', $product->is_best_seller) ? 'checked' : '' }}>
                     <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-purple-600 after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
                     <span class="ml-3 text-sm font-medium text-gray-700">Tandai Terlaris</span>
                 </label>
@@ -139,10 +149,9 @@
                 Gambar Barang
                 <span class="ml-1 text-[10px] font-normal text-gray-300 normal-case tracking-normal">(opsional, maks. 2MB)</span>
             </label>
-
             <label for="image"
                 class="group flex flex-col items-center justify-center w-full border-2 border-dashed rounded-xl px-4 py-6 cursor-pointer transition
-                       @error('image') border-red-300 bg-red-50 hover:bg-red-50 @else hover:border-gray-300 @enderror"
+                    @error('image') border-red-300 bg-red-50 hover:bg-red-50 @else hover:border-gray-300 @enderror"
                 id="upload-area">
                 <div id="upload-placeholder" class="flex flex-col items-center gap-2 text-center">
                     <div class="w-10 h-10 bg-white border border-gray-200 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow transition">
@@ -156,20 +165,21 @@
                 <input type="file" name="image" id="image" accept="image/*" class="hidden">
             </label>
 
-            {{-- Preview --}}
-            <div id="image-preview-wrapper" class="hidden mt-3">
+            <div id="image-preview-wrapper" class="{{ $product->image ? '' : 'hidden' }} mt-3">
                 <div class="flex items-start gap-3 p-3 bg-gray-50 border border-gray-200 rounded-xl">
                     <div class="w-20 h-20 rounded-lg overflow-hidden border border-gray-200 shrink-0 bg-white">
-                        <img id="image-preview" src="#" alt="Preview" class="w-full h-full object-cover">
+                        <img id="image-preview"
+                            src="{{ $product->image ? asset('img/products/' . $product->image) : '#' }}"
+                            alt="Preview"
+                            class="w-full h-full object-cover">
                     </div>
                     <div class="flex-1 min-w-0 pt-1">
-                        <p id="preview-filename" class="text-xs font-semibold text-gray-700 truncate"></p>
-                        <p id="preview-filesize" class="text-xs text-gray-400 mt-0.5"></p>
-                        <button type="button" id="remove-image"
-                            class="mt-2 flex items-center gap-1 text-xs font-semibold text-red-500 hover:text-red-700 transition">
-                            <i class="fa-regular fa-trash-can text-xs"></i>
-                            Hapus gambar
-                        </button>
+                        <p id="preview-filename" class="text-xs font-semibold text-gray-700 truncate">
+                            {{ $product->image ?? '' }}
+                        </p>
+                        <p id="preview-filesize" class="text-xs text-gray-400 mt-0.5">
+                            {{ $product->image ? 'Gambar saat ini' : '' }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -181,7 +191,6 @@
                 </p>
             @enderror
         </div>
-
         <div class="border-t border-gray-100"></div>
         <div class="flex items-center justify-end gap-3 pt-1">
             <a href="{{ route('admin.products.index') }}"
@@ -199,14 +208,24 @@
 </div>
 
 <script>
-    // Image preview
-    const imageInput = document.getElementById('image');
-    const previewWrapper = document.getElementById('image-preview-wrapper');
-    const previewImg = document.getElementById('image-preview');
+    const nameInput = document.getElementById('name');
+    const slugInput = document.getElementById('slug');
+    nameInput.addEventListener('input', function () {
+        const slug = this.value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/-+/g, '-');
+        slugInput.value = slug;
+    });
+
+    const imageInput      = document.getElementById('image');
+    const previewWrapper  = document.getElementById('image-preview-wrapper');
+    const previewImg      = document.getElementById('image-preview');
     const previewFilename = document.getElementById('preview-filename');
     const previewFilesize = document.getElementById('preview-filesize');
-    const uploadPlaceholder = document.getElementById('upload-placeholder');
-    const removeBtn = document.getElementById('remove-image');
+    const removeBtn       = document.getElementById('remove-image');
 
     imageInput.addEventListener('change', function () {
         const file = this.files[0];
@@ -218,7 +237,6 @@
             previewFilename.textContent = file.name;
             previewFilesize.textContent = (file.size / 1024).toFixed(1) + ' KB';
             previewWrapper.classList.remove('hidden');
-            uploadPlaceholder.classList.add('hidden');
         };
         reader.readAsDataURL(file);
     });
@@ -227,7 +245,6 @@
         imageInput.value = '';
         previewImg.src = '#';
         previewWrapper.classList.add('hidden');
-        uploadPlaceholder.classList.remove('hidden');
     });
 </script>
 

@@ -5,8 +5,6 @@
 @endsection
 
 @section('container')
-
-{{-- Header --}}
 <div class="flex items-center justify-between mb-6">
     <div>
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Master Data</p>

@@ -8,5 +8,6 @@
     @include('partials.hero')
     @include('partials.benefits')
     @include('partials.categories')
+    @include('partials.products-best')
     @include('partials.products')
 @endsection

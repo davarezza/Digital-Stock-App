@@ -5,8 +5,6 @@
 @endsection
 
 @section('container')
-
-{{-- Header --}}
 <div class="flex items-center justify-between mb-6">
     <div>
         <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-0.5">Master Data</p>
@@ -71,7 +69,6 @@
                 <input type="file" name="image" id="image" accept="image/*" class="hidden">
             </label>
 
-            {{-- Preview --}}
             <div id="image-preview-wrapper" class="{{ $category->image ? '' : 'hidden' }} mt-3">
                 <div class="flex items-start gap-3 p-3 bg-gray-50 border border-gray-200 rounded-xl">
                     <div class="w-20 h-20 rounded-lg overflow-hidden border border-gray-200 shrink-0 bg-white">
@@ -87,11 +84,6 @@
                         <p id="preview-filesize" class="text-xs text-gray-400 mt-0.5">
                             {{ $category->image ? 'Gambar saat ini' : '' }}
                         </p>
-                        <button type="button" id="remove-image"
-                            class="mt-2 flex items-center gap-1 text-xs font-semibold text-red-500 hover:text-red-700 transition">
-                            <i class="fa-regular fa-trash-can text-xs"></i>
-                            Hapus gambar
-                        </button>
                     </div>
                 </div>
             </div>

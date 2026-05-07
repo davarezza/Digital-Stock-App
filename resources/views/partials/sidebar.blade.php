@@ -11,7 +11,7 @@
         <a href="{{ route('dashboard.index') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
                   {{ request()->routeIs('dashboard.index') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-solid fa-chart-pie text-sm w-4 text-center shrink-0
+            <i class="fa-solid fa-dashboard text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('dashboard.index') ? 'text-white' : 'text-gray-400' }}"></i>
             <span class="text-sm font-semibold">Dashboard</span>
         </a>
@@ -19,7 +19,7 @@
         <a href="{{ route('admin.categories.index') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
                   {{ request()->routeIs('admin.categories*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-regular fa-box text-sm w-4 text-center shrink-0
+            <i class="fa-solid fa-table-cells-large text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('admin.categories*') ? 'text-white' : 'text-gray-400' }}"></i>
             <span class="text-sm font-medium">Kategori</span>
         </a>
@@ -27,7 +27,7 @@
         <a href="{{ route('admin.products.index') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
                   {{ request()->routeIs('admin.products*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-regular fa-chart-bar text-sm w-4 text-center shrink-0
+            <i class="fa-solid fa-box-open text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('admin.products*') ? 'text-white' : 'text-gray-400' }}"></i>
             <span class="text-sm font-medium">Barang</span>
         </a>
@@ -66,17 +66,16 @@
         {{-- System --}}
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pb-2">System</p>
 
-        <a href="#"
-           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
-                  {{ request()->routeIs('admin.settings*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-regular fa-gear text-sm w-4 text-center shrink-0
+        <a href="{{ route('home') }}"
+           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-red-50 hover:text-red-600 transition">
+            <i class="fa-solid fa-arrow-left text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('admin.settings*') ? 'text-white' : 'text-gray-400' }}"></i>
-            <span class="text-sm font-medium">Settings</span>
+            <span class="text-sm font-medium">Kembali</span>
         </a>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-red-50 hover:text-red-600 transition">
-                <i class="fa-regular fa-right-from-bracket text-sm w-4 text-center shrink-0"></i>
+                <i class="fa-solid fa-right-from-bracket text-sm w-4 text-center shrink-0"></i>
                 <span class="text-sm font-medium">Logout</span>
             </button>
         </form>
