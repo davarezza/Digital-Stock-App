@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\User\WishListController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
@@ -41,4 +42,12 @@ Route::middleware('auth')->group(function () {
         'update' => 'admin.products.update',
         'destroy' => 'admin.products.destroy',
     ]);
+
+    Route::resource('wishlist', WishListController::class)->names([
+        'index' => 'wishlist.index',
+        'store' => 'wishlist.store',
+        'update' => 'wishlist.update',
+        'destroy' => 'wishlist.destroy',
+    ]);
+    Route::patch('/wishlist/{wishlist}/note', [WishListController::class, 'updateNote'])->name('wishlist.updateNote');
 });

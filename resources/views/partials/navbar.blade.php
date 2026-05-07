@@ -25,11 +25,11 @@
         </div>
 
         <div class="flex-1"></div>
-        <a href="#" class="relative shrink-0 group">
+        <a href="{{ route('wishlist.index') }}" class="relative shrink-0 group">
             <div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
                 <i class='bx bx-heart text-gray-600 text-2xl group-hover:text-green-600 transition'></i>
             </div>
-            <span class="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
+            <span class="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">{{ $wishlistCount }}</span>
         </a>
         @auth
             @if (auth()->user()->role === 'admin')
@@ -46,9 +46,6 @@
             </div>
             @else
             <div class="flex items-center gap-2 shrink-0">
-                <a href="#" class="flex items-center gap-1.5 text-sm font-semibold text-gray-700 border border-gray-300 hover:border-green-500 hover:text-green-600 px-4 py-2 rounded-full transition shrink-0">
-                    <i class='bx bx-user text-base'></i> Profil
-                </a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="flex items-center gap-1.5 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full transition shrink-0">

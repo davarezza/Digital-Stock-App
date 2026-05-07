@@ -96,7 +96,7 @@
 
             <div>
                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Status Terlaris</p>
-                @if (($product->sold ?? 0) >= 100)
+                @if (($product->is_best_seller == 1))
                     <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-yellow-50 text-yellow-600 border border-yellow-100 px-3 py-1.5 rounded-full">
                         <i class="fa-solid fa-fire text-xs"></i>
                         Terlaris
