@@ -5,7 +5,8 @@
             <span class="text-xs font-bold text-green-600 uppercase tracking-widest">Terlaris</span>
             <h2 class="text-2xl font-black text-gray-900 mt-0.5">Terlaris di {{ config('app.name') }}</h2>
         </div>
-        <a href="#" class="text-sm font-bold text-green-600 hover:text-green-700 flex items-center gap-1 transition">
+        <a href="{{ route('product-list', ['best_seller' => 1]) }}"
+        class="text-sm font-bold text-green-600 hover:text-green-700 flex items-center gap-1 transition">
             Lihat Semua <i class='bx bx-chevron-right'></i>
         </a>
     </div>

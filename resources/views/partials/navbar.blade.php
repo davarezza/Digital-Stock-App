@@ -10,27 +10,23 @@
             </div>
         </a>
 
-        <div class="flex items-center gap-2 w-180 shrink-0">
-            <div class="flex-1 flex items-center bg-gray-50 border border-gray-200 rounded-full px-4 py-2 gap-2 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-100 transition">
-                <i class='bx bx-search text-gray-400 text-lg shrink-0'></i>
-                <input
-                    type="text"
-                    placeholder="Cari produk grosir, brand, atau kategori..."
-                    class="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
-                >
-            </div>
-            <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition shadow-sm shrink-0">
-                Cari
-            </button>
+        <form action="{{ route('product-list') }}" method="GET" class="flex items-center gap-2 w-180 shrink-0">
+        <div class="flex-1 flex items-center bg-gray-50 border border-gray-200 rounded-full px-4 py-2 gap-2 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-100 transition">
+            <i class='bx bx-search text-gray-400 text-lg shrink-0'></i>
+            <input
+                type="text"
+                name="search"
+                value="{{ request('search') }}"
+                placeholder="Cari produk grosir, brand, atau kategori..."
+                class="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
+            >
         </div>
+        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition shadow-sm shrink-0">
+            Cari
+        </button>
+    </form>
 
         <div class="flex-1"></div>
-        <a href="{{ route('wishlist.index') }}" class="relative shrink-0 group">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
-                <i class='bx bx-heart text-gray-600 text-2xl group-hover:text-green-600 transition'></i>
-            </div>
-            <span class="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">{{ $wishlistCount }}</span>
-        </a>
         @auth
             @if (auth()->user()->role === 'admin')
             <div class="flex items-center gap-2 shrink-0">
@@ -46,6 +42,12 @@
             </div>
             @else
             <div class="flex items-center gap-2 shrink-0">
+                <a href="{{ route('wishlist.index') }}" class="relative shrink-0 group">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition">
+                        <i class='bx bx-heart text-gray-600 text-2xl group-hover:text-green-600 transition'></i>
+                    </div>
+                    <span class="absolute -top-1 -right-1 w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">{{ $wishlistCount }}</span>
+                </a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="flex items-center gap-1.5 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full transition shrink-0">

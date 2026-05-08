@@ -9,6 +9,7 @@ use App\Http\Controllers\User\WishListController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/product-list', [MainController::class, 'productList'])->name('product-list');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [AuthController::class, 'loginPage'])->name('login');
