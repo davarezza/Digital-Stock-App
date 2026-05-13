@@ -6,7 +6,7 @@
             </div>
             <div class="leading-tight">
                 <span class="block text-base font-extrabold text-gray-900 leading-none">{{ config('app.name', 'GrosirKita') }}</span>
-                <span class="block text-[10px] font-bold text-green-600 uppercase tracking-widest leading-none">Beli Per Dus</span>
+                <span class="block text-[10px] font-bold text-green-600 uppercase tracking-widest leading-none">Beli Per Pack</span>
             </div>
         </a>
 
@@ -17,7 +17,7 @@
                 type="text"
                 name="search"
                 value="{{ request('search') }}"
-                placeholder="Cari produk grosir, brand, atau kategori..."
+                placeholder="Cari nama barang grosir..."
                 class="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
             >
         </div>

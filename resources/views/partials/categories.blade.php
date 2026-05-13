@@ -8,12 +8,18 @@
     </div>
     <div class="grid grid-cols-6 md:grid-cols-12 gap-3">
         @foreach ($categories as $cat)
-        <a href="#" class="flex flex-col items-center gap-2 group col-span-2 md:col-span-1">
-            <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-transparent group-hover:border-green-400 transition shadow-sm group-hover:shadow-md">
-                <img src="{{ asset('img/categories/' . $cat->image) }}" alt="{{ $cat->name }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-            </div>
-            <span class="text-xs font-semibold text-gray-700 text-center leading-tight group-hover:text-green-600 transition">{{ $cat->name }}</span>
-        </a>
+            <a href="{{ route('product-list', ['category' => Str::slug($cat->name)]) }}"
+            class="flex flex-col items-center gap-2 group col-span-2 md:col-span-1">
+
+                <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 transition
+                    {{ request('category') == Str::slug($cat->name) ? 'border-green-600 shadow-md' : 'border-transparent' }}">
+                    <img src="{{ asset('img/categories/' . $cat->image) }}" class="w-full h-full object-cover">
+                </div>
+
+                <span class="text-xs font-semibold {{ request('category') == Str::slug($cat->name) ? 'text-green-600' : 'text-gray-700' }}">
+                    {{ $cat->name }}
+                </span>
+            </a>
         @endforeach
     </div>
 

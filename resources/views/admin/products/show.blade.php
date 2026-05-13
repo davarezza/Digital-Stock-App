@@ -103,7 +103,7 @@
                     </span>
                 @else
                     <span class="inline-flex items-center gap-1.5 text-xs font-semibold bg-gray-100 text-gray-400 border border-gray-200 px-3 py-1.5 rounded-full">
-                        <i class="fa-regular fa-minus text-xs"></i>
+                        <i class="fa-solid fa-check text-xs"></i>
                         Reguler
                     </span>
                 @endif

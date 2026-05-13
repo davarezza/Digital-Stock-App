@@ -63,37 +63,24 @@
 
     <form class="w-full space-y-3" action="{{ route('register') }}" method="POST">
         @csrf
-
-        {{-- Full Name --}}
         <div class="relative">
             <span class="absolute inset-y-0 left-4 flex items-center text-gray-400 pointer-events-none">
                 <i class='bx bx-user text-lg'></i>
             </span>
             <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Full Name"
-                autocomplete="off"
-                value="{{ old('name') }}"
-                class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('name') ring-2 ring-red-400 @enderror"
-            >
+                type="text" name="name" id="name" placeholder="Full Name" autocomplete="off" value="{{ old('name') }}"
+                class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('name') ring-2 ring-red-400 @enderror">
         </div>
         @error('name')
             <p class="mt-1 text-xs text-red-400 pl-4">{{ $message }}</p>
         @enderror
 
-        {{-- Email --}}
         <div class="relative">
             <span class="absolute inset-y-0 left-4 flex items-center text-gray-400 pointer-events-none">
                 <i class='bx bx-envelope text-lg'></i>
             </span>
-
             <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Email Address"
+                type="email" name="email" id="email" placeholder="Email Address"
                 class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm border border-gray-200 focus:ring-2 focus:ring-gray-300 @error('email') ring-2 ring-red-400 @enderror"
             >
         </div>
@@ -101,26 +88,18 @@
             <p class="mt-1 text-xs text-red-400 pl-4">{{ $message }}</p>
         @enderror
 
-        {{-- Phone --}}
         <div class="relative">
             <span class="absolute inset-y-0 left-4 flex items-center text-gray-400 pointer-events-none">
                 <i class='bx bx-phone text-lg'></i>
             </span>
             <input
-                type="number"
-                name="phone_number"
-                id="phone_number"
-                placeholder="Phone Number (62...)"
-                autocomplete="off"
-                value="{{ old('phone_number') }}"
-                class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('phone_number') ring-2 ring-red-400 @enderror"
-            >
+                type="number" name="phone_number" id="phone_number" placeholder="Phone Number (62...)" autocomplete="off" value="{{ old('phone_number') }}"
+                class="w-full pl-10 pr-4 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('phone_number') ring-2 ring-red-400 @enderror">
         </div>
         @error('phone_number')
             <p class="mt-1 text-xs text-red-400 pl-4">{{ $message }}</p>
         @enderror
 
-        {{-- Password --}}
         <div class="relative">
             <span class="absolute inset-y-0 left-4 flex items-center text-gray-400 pointer-events-none">
                 <i class='bx bx-lock-alt text-lg'></i>
@@ -134,19 +113,17 @@
                 class="w-full pl-10 pr-11 py-3 rounded-full bg-white text-sm text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 @error('password') ring-2 ring-red-400 @enderror"
             >
             <button type="button" id="togglePassword" class="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-gray-700">
-                <i class='bx bx-hide text-lg'></i>
+                <i class='bx bx-check text-lg'></i>
             </button>
         </div>
         @error('password')
             <p class="mt-1 text-xs text-red-400 pl-4">{{ $message }}</p>
         @enderror
 
-        {{-- Submit --}}
         <div class="pt-1">
             <button
                 type="submit"
-                class="w-full py-3 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition duration-200 shadow-md"
-            >
+                class="w-full py-3 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-gray-700 transition duration-200 shadow-md">
                 Buat Akun
             </button>
         </div>
@@ -157,4 +134,19 @@
         <a href="{{ route('login') }}" class="text-gray-900 font-semibold hover:underline">Masuk di sini</a>
     </p>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '#togglePassword', function () {
+            const passwordInput = $('#password');
+            const icon = $(this).find('i');
+
+            if (passwordInput.attr('type') === 'password') {
+                passwordInput.attr('type', 'text');
+            } else {
+                passwordInput.attr('type', 'password');
+            }
+        });
+    });
+</script>
 @endsection

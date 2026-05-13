@@ -35,15 +35,12 @@ class MainController extends Controller
                 $q->whereRaw("LOWER(REPLACE(name, ' ', '-')) = ?", [$request->category]);
             });
         }
-
         if ($request->has('best_seller')) {
             $query->where('is_best_seller', 1);
         }
-
         if ($request->has('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
-
         $products = $query->latest()->paginate(10);
         $productCount = $products->total();
 

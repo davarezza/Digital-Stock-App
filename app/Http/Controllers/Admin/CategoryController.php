@@ -79,7 +79,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'image' => 'required|image|max:2048',
+            'image' => 'nullable|image|max:2048',
         ], [
             'name.required' => 'Nama kategori wajib diisi.',
             'image.required' => 'Gambar kategori wajib diunggah.',
@@ -95,8 +95,9 @@ class CategoryController extends Controller
                     unlink($oldImagePath);
                 }
             }
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('img/categories'), $imageName);
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img/categories/'), $imageName);
             $category->image = $imageName;
         }
 

@@ -59,18 +59,6 @@
         toastr.options = { "positionClass": "toast-top-right" };
         toastr.error("{{ Session::get('email') }}");
         @endif
-
-        const togglePassword = document.getElementById('togglePassword');
-        const password = document.getElementById('password');
-
-        if (togglePassword) {
-            togglePassword.addEventListener('click', function () {
-                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                password.setAttribute('type', type);
-                this.querySelector('i').classList.toggle('bx-hide');
-                this.querySelector('i').classList.toggle('bx-show');
-            });
-        }
     </script>
 </body>
 </html>

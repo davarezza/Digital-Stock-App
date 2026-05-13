@@ -19,14 +19,14 @@ class WishListController extends Controller
         ->latest()
         ->get();
 
-        $message = "Halo Admin Digital Stock, saya ingin memesan:\n\n";
+        $message = "Halo Admin Grosir Kita, saya ingin memesan:\n\n";
         foreach ($wishlists as $index => $item) {
             $no = $index + 1;
-            $message .= "{$no}. *{$item->product->name}*\n";
-            if($item->note) $message .= "   _Catatan: {$item->note}_\n";
+            $message .= "{$no}. *{$item->product->name}*";
+            if($item->note) $message .= "\nCatatan: {$item->note}\n";
             $message .= "\n";
         }
-        $waUrl = "https://wa.me/" . config('app.wa_number', '628123456789') . "?text=" . urlencode($message);
+        $waUrl = "https://wa.me/" . config('app.wa_number', '6282114448178') . "?text=" . urlencode($message);
 
         return view('wishlist.index', [
             'wishlists' => $wishlists,
@@ -85,8 +85,14 @@ class WishListController extends Controller
      */
     public function destroy(string $id)
     {
-        $wishlist = Wishlist::where('user_id', Auth::id())->where('id', $id)->firstOrFail();
-        $wishlist->delete();
+        $wishlist = Wishlist::where('user_id', Auth::id())
+                            ->where('product_id', $id)
+                            ->first();
+
+        if ($wishlist) {
+            $wishlist->delete();
+            return redirect()->back()->with('success', 'Barang berhasil dihapus dari favorit!');
+        }
 
         return redirect()->back()->with('error', 'Barang tidak ditemukan di favorit!');
     }

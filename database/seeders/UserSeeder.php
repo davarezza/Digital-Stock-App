@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Admin Digital Stock',
             'email' => 'admin@digitalstock.com',
-            'phone_number' => '628123456789',
+            'phone_number' => '6282114448178',
             'password' => Hash::make('password123'),
             'role' => 'admin',
         ]);
