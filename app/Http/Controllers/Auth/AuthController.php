@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         User::create($validatedData);
 
-        return redirect('login')->with('success', 'Registration successful. You can now log in.');
+        return redirect('login')->with('success', 'Pendaftaran berhasil. Anda sekarang dapat masuk.');
     }
 
     public function loginPage()
@@ -50,10 +50,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            return redirect('/')->with('success', 'Login Success.');
+            return redirect('/')->with('success', 'Login Berhasil.');
         }
 
-        return back()->with('loginError', 'Login Failed');
+        return back()->with('loginError', 'Login Gagal');
     }
 
     public function logout()

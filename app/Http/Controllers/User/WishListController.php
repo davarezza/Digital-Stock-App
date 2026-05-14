@@ -15,17 +15,22 @@ class WishListController extends Controller
     public function index()
     {
         $wishlists = Wishlist::where('user_id', Auth::id())
-        ->with('product.category')
-        ->latest()
-        ->get();
+            ->with('product.category')
+            ->latest()
+            ->get();
 
-        $message = "Halo Admin Grosir Kita, saya ingin memesan:\n\n";
+        $message = "*Halo Admin Grosir Kita, saya ingin memesan:*\n\n";
         foreach ($wishlists as $index => $item) {
             $no = $index + 1;
-            $message .= "{$no}. *{$item->product->name}*";
-            if($item->note) $message .= "\nCatatan: {$item->note}\n";
-            $message .= "\n";
+            $productName = $item->product->name;
+            $message .= "{$no}. *{$productName}*";
+
+            if (!empty($item->note)) {
+                $message .= "\n   _Catatan: {$item->note}_";
+            }
+            $message .= "\n\n";
         }
+        $message .= "Terima kasih.";
         $waUrl = "https://wa.me/" . config('app.wa_number', '6282114448178') . "?text=" . urlencode($message);
 
         return view('wishlist.index', [
