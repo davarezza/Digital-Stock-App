@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/admin/wishlist', [DashboardController::class, 'wishlistAdmin'])->name('admin.wishlist');
+        Route::get('/admin/orders', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('admin.orders.index');
 
         Route::resource('/admin/categories', CategoryController::class)->names([
             'index' => 'admin.categories.index',

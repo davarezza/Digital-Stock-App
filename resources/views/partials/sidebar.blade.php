@@ -40,6 +40,14 @@
             <span class="text-sm font-medium">Barang Favorit</span>
         </a>
 
+        <a href="{{ route('admin.orders.index') }}"
+            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
+                    {{ request()->routeIs('admin.orders*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-cart-shopping text-sm w-4 text-center shrink-0
+                    {{ request()->routeIs('admin.orders*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Pesanan</span>
+        </a>
+
         <div class="border-t border-gray-100 my-3"></div>
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pb-2">Sistem</p>
 
