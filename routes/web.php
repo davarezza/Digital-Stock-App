@@ -26,7 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/admin/wishlist', [DashboardController::class, 'wishlistAdmin'])->name('admin.wishlist');
-        Route::get('/admin/orders', [OrderController::class, 'index'])->name('admin.orders.index');
 
         Route::resource('/admin/categories', CategoryController::class)->names([
             'index' => 'admin.categories.index',
@@ -47,6 +46,8 @@ Route::middleware('auth')->group(function () {
             'update' => 'admin.products.update',
             'destroy' => 'admin.products.destroy',
         ]);
+
+        Route::resource('/admin/orders', OrderController::class);
     });
 
     Route::middleware('user')->group(function () {
