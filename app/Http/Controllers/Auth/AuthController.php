@@ -56,12 +56,14 @@ class AuthController extends Controller
         return back()->with('loginError', 'Login Gagal');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        request()->session()->invalidate();
 
-        return redirect('/');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Logout Berhasil.');
     }
 
 }
