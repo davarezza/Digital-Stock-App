@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Location;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Wishlist;
@@ -86,5 +87,14 @@ public function index()
         return view('dashboard.wishlist', [
             'wishlists' => $wishlists,
         ]);
+    }
+
+    public function location()
+    {
+        $locations = Location::withCount('inventories')
+            ->withSum('inventories as total_stock_pcs', 'stock_pcs')
+            ->get();
+
+        return view('dashboard.location', compact('locations'));
     }
 }

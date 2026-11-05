@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MainController;
@@ -25,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/admin/wishlist', [DashboardController::class, 'wishlistAdmin'])->name('admin.wishlist');
+        Route::get('/admin/location', [DashboardController::class, 'location'])->name('admin.location');
 
         Route::resource('/admin/categories', CategoryController::class)->names([
             'index' => 'admin.categories.index',
@@ -44,6 +46,16 @@ Route::middleware('auth')->group(function () {
             'edit' => 'admin.products.edit',
             'update' => 'admin.products.update',
             'destroy' => 'admin.products.destroy',
+        ]);
+
+        Route::resource('/admin/orders', OrderController::class)->names([
+            'index' => 'admin.orders.index',
+            'create' => 'admin.orders.create',
+            'store' => 'admin.orders.store',
+            'show' => 'admin.orders.show',
+            'edit' => 'admin.orders.edit',
+            'update' => 'admin.orders.update',
+            'destroy' => 'admin.orders.destroy',
         ]);
     });
 

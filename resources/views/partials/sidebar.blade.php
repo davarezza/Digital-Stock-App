@@ -32,20 +32,12 @@
             <span class="text-sm font-semibold">Dashboard</span>
         </a>
 
-        <a href="#"
+        <a href="{{ route('admin.orders.index') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
                   {{ request()->routeIs('admin.orders*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
             <i class="fa-solid fa-cart-shopping text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('admin.orders*') ? 'text-white' : 'text-gray-400' }}"></i>
             <span class="text-sm font-medium">Pesanan</span>
-        </a>
-
-        <a href="#"
-           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
-                  {{ request()->routeIs('admin.transfers*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-solid fa-truck-ramp-box text-sm w-4 text-center shrink-0
-                      {{ request()->routeIs('admin.transfers*') ? 'text-white' : 'text-gray-400' }}"></i>
-            <span class="text-sm font-medium">Distribusi</span>
         </a>
 
         <a href="{{ route('admin.wishlist') }}"
@@ -75,12 +67,12 @@
             <span class="text-sm font-medium">Kategori</span>
         </a>
 
-        <a href="#"
+        <a href="{{ route('admin.location') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
-                  {{ request()->routeIs('admin.warehouses*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+                  {{ request()->routeIs('admin.location*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
             <i class="fa-solid fa-warehouse text-sm w-4 text-center shrink-0
-                      {{ request()->routeIs('admin.warehouses*') ? 'text-white' : 'text-gray-400' }}"></i>
-            <span class="text-sm font-medium">Gudang</span>
+                      {{ request()->routeIs('admin.location*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Lokasi Gudang</span>
         </a>
 
         <div class="border-t border-gray-100 my-3"></div>
