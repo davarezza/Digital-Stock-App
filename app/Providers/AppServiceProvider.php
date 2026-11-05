@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Menggunakan View Composer untuk mengirim data ke partials.navbar
         View::composer('partials.navbar', function ($view) {
             if (Auth::check()) {
                 $count = Wishlist::where('user_id', Auth::id())->count();

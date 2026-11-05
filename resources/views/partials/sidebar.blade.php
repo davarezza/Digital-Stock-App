@@ -1,10 +1,8 @@
-{{-- OVERLAY (mobile only) --}}
 <div id="sidebar-overlay"
      class="fixed inset-0 bg-black/40 z-30 hidden opacity-0 lg:hidden transition-opacity duration-300"
      onclick="closeSidebar()">
 </div>
 
-{{-- HAMBURGER BUTTON (mobile only) --}}
 <div class="lg:hidden fixed top-3 left-3 z-50">
     <button onclick="toggleSidebar()"
             class="w-10 h-10 bg-white rounded-xl shadow flex items-center justify-center border border-gray-200">
@@ -12,12 +10,10 @@
     </button>
 </div>
 
-{{-- SIDEBAR --}}
 <aside id="sidebar"
        class="w-52 min-h-screen bg-white border-r border-gray-200 flex flex-col shrink-0 shadow-sm
               fixed top-0 left-0 z-40 -translate-x-full transition-transform duration-300
               lg:relative lg:translate-x-0 lg:z-auto">
-
     <div class="flex items-center gap-2.5 px-4 py-4 border-b border-gray-100">
         <div class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center shrink-0 shadow">
             <i class="fa-solid fa-boxes-stacked text-white text-sm"></i>
@@ -31,25 +27,25 @@
         <a href="{{ route('dashboard.index') }}"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
                   {{ request()->routeIs('dashboard.index') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-solid fa-dashboard text-sm w-4 text-center shrink-0
+            <i class="fa-solid fa-chart-pie text-sm w-4 text-center shrink-0
                       {{ request()->routeIs('dashboard.index') ? 'text-white' : 'text-gray-400' }}"></i>
             <span class="text-sm font-semibold">Dashboard</span>
         </a>
 
-        <a href="{{ route('admin.categories.index') }}"
+        <a href="#"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
-                  {{ request()->routeIs('admin.categories*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-solid fa-table-cells-large text-sm w-4 text-center shrink-0
-                      {{ request()->routeIs('admin.categories*') ? 'text-white' : 'text-gray-400' }}"></i>
-            <span class="text-sm font-medium">Kategori</span>
+                  {{ request()->routeIs('admin.orders*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-cart-shopping text-sm w-4 text-center shrink-0
+                      {{ request()->routeIs('admin.orders*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Pesanan</span>
         </a>
 
-        <a href="{{ route('admin.products.index') }}"
+        <a href="#"
            class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
-                  {{ request()->routeIs('admin.products*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
-            <i class="fa-solid fa-box-open text-sm w-4 text-center shrink-0
-                      {{ request()->routeIs('admin.products*') ? 'text-white' : 'text-gray-400' }}"></i>
-            <span class="text-sm font-medium">Barang</span>
+                  {{ request()->routeIs('admin.transfers*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-truck-ramp-box text-sm w-4 text-center shrink-0
+                      {{ request()->routeIs('admin.transfers*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Distribusi</span>
         </a>
 
         <a href="{{ route('admin.wishlist') }}"
@@ -61,10 +57,37 @@
         </a>
 
         <div class="border-t border-gray-100 my-3"></div>
-        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pb-2">Sistem</p>
 
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pb-2">Inventaris</p>
+        <a href="{{ route('admin.products.index') }}"
+           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
+                  {{ request()->routeIs('admin.products*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-box-open text-sm w-4 text-center shrink-0
+                      {{ request()->routeIs('admin.products*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Barang</span>
+        </a>
+
+        <a href="{{ route('admin.categories.index') }}"
+           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
+                  {{ request()->routeIs('admin.categories*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-table-cells-large text-sm w-4 text-center shrink-0
+                      {{ request()->routeIs('admin.categories*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Kategori</span>
+        </a>
+
+        <a href="#"
+           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl transition
+                  {{ request()->routeIs('admin.warehouses*') ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-50' }}">
+            <i class="fa-solid fa-warehouse text-sm w-4 text-center shrink-0
+                      {{ request()->routeIs('admin.warehouses*') ? 'text-white' : 'text-gray-400' }}"></i>
+            <span class="text-sm font-medium">Gudang</span>
+        </a>
+
+        <div class="border-t border-gray-100 my-3"></div>
+
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 pb-2">Sistem</p>
         <a href="{{ route('home') }}"
-           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-red-50 hover:text-red-600 transition">
+           class="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition">
             <i class="fa-solid fa-arrow-left text-sm w-4 text-center shrink-0 text-gray-400"></i>
             <span class="text-sm font-medium">Kembali</span>
         </a>

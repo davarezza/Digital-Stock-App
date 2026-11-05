@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('image')->nullable();
             $table->decimal('price', 12, 2);
-            $table->integer('stock')->default(0)->nullable();
-            // Keterangan Satuan (Misal: "Per Box isi 24" atau "Per Dus")
+            $table->integer('stock')->default(0);
             $table->string('unit_description')->default('Per Box')->nullable();
             $table->boolean('is_best_seller')->default(false);
             $table->boolean('is_visible')->default(true);
